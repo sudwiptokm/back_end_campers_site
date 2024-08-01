@@ -29,6 +29,10 @@ const UpdateProductIntoDB = async (productId: string, product: TProduct) => {
   if (!(await Product.isProductExist(productId))) {
     throw new AppError(404, 'Product not found');
   }
+  if (product.promotion === '') {
+    delete product.promotion;
+  }
+
   return await Product.findByIdAndUpdate({ _id: productId }, product, {
     new: true,
   });

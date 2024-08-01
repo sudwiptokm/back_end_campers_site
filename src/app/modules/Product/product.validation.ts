@@ -60,7 +60,7 @@ const ProductCreateValidationSchema = z.object({
       invalid_type_error: 'Product subtitle must be a string',
     })
     .optional(),
-  promotion: z.enum(['featured', 'top_selling']).optional(),
+  promotion: z.enum(['featured', 'top_selling', '']).optional(),
 });
 
 const ProductUpdateValidationSchema = ProductCreateValidationSchema.partial();

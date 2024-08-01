@@ -47,7 +47,7 @@ const ProductSchema = new Schema<TProduct>(
     },
     promotion: {
       type: String,
-      enum: ['featured', 'top_selling'],
+      enum: ['featured', 'top_selling', ''],
     },
   },
   {

@@ -9,7 +9,7 @@ export interface TProduct {
   rating: number;
   stock: number;
   subtitle?: string;
-  promotion?: 'featured' | 'top_selling';
+  promotion?: 'featured' | 'top_selling' | '';
 }
 
 export interface ProductModel extends Model<TProduct> {
