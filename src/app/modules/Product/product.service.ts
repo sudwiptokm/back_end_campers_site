@@ -29,11 +29,16 @@ const UpdateProductIntoDB = async (productId: string, product: TProduct) => {
   if (!(await Product.isProductExist(productId))) {
     throw new AppError(404, 'Product not found');
   }
+
+  let updateOperation: any = { $set: product };
+
+  // If promotion is an empty string, use $unset to remove it from the document
   if (product.promotion === '') {
     delete product.promotion;
+    updateOperation.$unset = { promotion: '' };
   }
 
-  return await Product.findByIdAndUpdate({ _id: productId }, product, {
+  return await Product.findByIdAndUpdate({ _id: productId }, updateOperation, {
     new: true,
   });
 };
